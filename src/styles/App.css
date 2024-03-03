@@ -1,0 +1,8 @@
+.component {
+    opacity: 1;
+    transition: opacity 10s ease-in-out;
+  }
+  
+  .component.hidden {
+    opacity: 0;
+  }
