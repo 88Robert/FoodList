@@ -1,5 +1,5 @@
 import { Container, Row, Col } from "react-bootstrap"
-import Search from "./Search"
+
 
 
 const FoodInfo = ({ title, image }) => {
@@ -7,9 +7,12 @@ const FoodInfo = ({ title, image }) => {
     <Container>
         <Row>
     <div>
-        <h2>Dina Maträtter</h2>
-        <p>Title: {title}</p>
-        <img src={image} alt={title} /> 
+      <ul>
+        <li>
+        <h4>Title: {title}</h4>
+        <img className="Foodpic" src={image} alt={title} /> 
+        </li>
+        </ul>
     </div>
     </Row>
     </Container>

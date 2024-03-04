@@ -6,3 +6,6 @@
   .component.hidden {
     opacity: 0;
   }
+  .Foodpic {
+    height: 200px;
+  }

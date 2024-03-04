@@ -1,10 +1,11 @@
 import { Container, Row, Col } from "react-bootstrap";
 import { useState } from "react";
+import FoodInfo from "./FoodInfo"; 
 
 const Search = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
-  const [error, setError] = useState(null);
+  const [selectedFood, setSelectedFood] = useState(null);
 
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
@@ -16,7 +17,7 @@ const Search = () => {
         `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchTerm}`
       );
       if (!response.ok) {
-        throw new Error("Network response was not ok");
+        throw new Error("Cannot fetch API");
       }
       const data = await response.json();
       setSearchResults(data.meals);
@@ -25,6 +26,10 @@ const Search = () => {
       setError("An error occurred while fetching data");
       setSearchResults([]);
     }
+  };
+
+  const handleFoodSelect = (food) => {
+    setSelectedFood(food);
   };
 
   return (
@@ -40,12 +45,10 @@ const Search = () => {
           />
           <br />
           <button onClick={searchFood}>Sök</button>
-          {error && <p>{error}</p>}
           <div className="food-list">
             {searchResults.map((food, index) => (
-              <div key={index} className="food-item">
-                <h3>{food.strMeal}</h3>
-                <img src={food.strMealThumb} alt={food.strMeal} />
+              <div key={index} onClick={() => handleFoodSelect(food)}>
+                <FoodInfo title={food.strMeal} image={food.strMealThumb} />
               </div>
             ))}
           </div>

@@ -18,7 +18,6 @@ function Mainpage() {
     <div className="component">
       <Header />
       <Search />
-      <FoodInfo />
     </div>
   );
 }
