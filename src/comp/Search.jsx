@@ -1,11 +1,12 @@
 import { Container, Row, Col } from "react-bootstrap";
 import { useState } from "react";
-import FoodInfo from "./FoodInfo"; 
+import FoodInfo from "./FoodInfo";
 
 const Search = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [selectedFood, setSelectedFood] = useState(null);
+  const [error, setError] = useState(null);
 
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
@@ -45,15 +46,23 @@ const Search = () => {
           />
           <br />
           <button onClick={searchFood}>Sök</button>
+          {error && <p>{error}</p>}
           <div className="food-list">
             {searchResults.map((food, index) => (
-              <div key={index} onClick={() => handleFoodSelect(food)}>
-                <FoodInfo title={food.strMeal} image={food.strMealThumb} />
+              <div key={index} className="food-item">
+                <h3>{food.strMeal}</h3>
+                <img
+                  className="Foodpic"
+                  src={food.strMealThumb}
+                  alt={food.strMeal}
+                  onClick={() => handleFoodSelect(food)}
+                />
               </div>
             ))}
           </div>
         </div>
       </Row>
+      {selectedFood && <FoodInfo food={selectedFood} />}
     </Container>
   );
 };

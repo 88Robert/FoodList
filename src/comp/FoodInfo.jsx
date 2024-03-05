@@ -1,22 +1,20 @@
 import { Container, Row, Col } from "react-bootstrap"
 
 
-
-const FoodInfo = ({ title, image }) => {
+const FoodInfo = ({ food }) => {
   return (
     <Container>
-        <Row>
-    <div>
-      <ul>
-        <li>
-        <h4>Title: {title}</h4>
-        <img className="Foodpic" src={image} alt={title} /> 
-        </li>
-        </ul>
-    </div>
-    </Row>
+      <Row>
+        <div>
+          <h2>Dina Maträtter</h2>
+          <p>Title: {food.strMeal}</p>
+          <img src={food.strMealThumb} alt={food.strMeal} />
+          <p>Category: {food.strCategory}</p>
+          <p>Area: {food.strArea}</p>
+        </div>
+      </Row>
     </Container>
-  )
-}
+  );
+};
 
 export default FoodInfo
