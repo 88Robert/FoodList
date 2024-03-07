@@ -13,10 +13,7 @@ const FoodInfo = ({ food }) => {
     <Container>
       <Row>
         <div>
-          <h3>Dina Maträtter</h3>
-          <p>
-            <strong>Title:</strong> {food.strMeal}
-          </p>
+          <h3>{food.strMeal}</h3>
           <img className="Foodpicid" src={food.strMealThumb} alt={food.strMeal} />
           <br />
           <h5>Ingredients:</h5>

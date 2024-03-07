@@ -10,17 +10,7 @@ function App() {
 
   return (
     <>
-      <Mainpage />
-      {/*    {showMainpage ? <Mainpage /> : <Intropage  />}
-      <button onClick={toggleComponent}>Go to next page!</button> */}
-
-      {/* {condition ? (
-        <button onClick={toggleComponent}>Go to next page!</button>
-      ) : (
-        <div>My fallback if false</div>
-      )} */}
-
-      {/* {condition && <button onClick={toggleComponent}>Go to next page!</button>} */}
+      {showMainpage? <Mainpage /> : <Intropage onClick={toggleComponent} />} 
     </>
   );
 }
