@@ -23,6 +23,7 @@ const Search = () => {
       const data = await response.json();
       setSearchResults(data.meals);
       setError(null);
+      console.log(data);
     } catch (error) {
       setError("An error occurred while fetching data");
       setSearchResults([]);
@@ -33,12 +34,16 @@ const Search = () => {
     setSelectedFood(food);
   };
 
+  const halfIndex = Math.ceil(searchResults.length / 2);
+  const firstHalfResults = searchResults.slice(0, halfIndex);
+  const secondHalfResults = searchResults.slice(halfIndex);
+
   return (
     <Container>
       <Row>
-        <div>
+        <div className="SearchDiv">
           <h2>Här hittar du flera olika delikata maträtter!</h2>
-          <input
+          <input className="input"
             type="text"
             placeholder="Sök på maträtter"
             value={searchTerm}
@@ -47,8 +52,10 @@ const Search = () => {
           <br />
           <button onClick={searchFood}>Sök</button>
           {error && <p>{error}</p>}
-          <div className="food-list">
-            {searchResults.map((food, index) => (
+        </div>
+        <Col xs={3} md={3}>
+          <div>
+            {firstHalfResults.map((food, index) => (
               <div key={index} className="food-item">
                 <h3>{food.strMeal}</h3>
                 <img
@@ -60,9 +67,26 @@ const Search = () => {
               </div>
             ))}
           </div>
-        </div>
+        </Col>
+        <Col xs={5} md={5}>
+          <div>
+            {secondHalfResults.map((food, index) => (
+              <div key={index} className="food-item">
+                <h3>{food.strMeal}</h3>
+                <img
+                  className="Foodpic"
+                  src={food.strMealThumb}
+                  alt={food.strMeal}
+                  onClick={() => handleFoodSelect(food)}
+                />
+              </div>
+            ))}
+          </div>
+        </Col>
+        <Col xs={4} md={4}>
+          {selectedFood && <FoodInfo food={selectedFood} />}
+        </Col>
       </Row>
-      {selectedFood && <FoodInfo food={selectedFood} />}
     </Container>
   );
 };

@@ -17,7 +17,8 @@ const FoodInfo = ({ food }) => {
           <p>
             <strong>Title:</strong> {food.strMeal}
           </p>
-          <img className="Foodpic" src={food.strMealThumb} alt={food.strMeal} />
+          <img className="Foodpicid" src={food.strMealThumb} alt={food.strMeal} />
+          <br />
           <h5>Ingredients:</h5>
           <ul>
             {filterIngredients(food).map((ingredient, index) => (

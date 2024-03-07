@@ -7,9 +7,20 @@
     opacity: 0;
   }
   .Foodpic {
-    height: 200px;
+    cursor: pointer;
+    height: 300px; 
+    border-radius: 15px;
+    box-shadow: 6px 3px 2px black;
     
+
   }
-  .Foodimage {
-    height: 230px;
+  .Foodpic:hover {
+    transform: scale(1.05);
+    transition: 0.3s ease-in-out;
+
   }
+
+  .Foodpicid {
+    height: 300px;
+  }
+  
