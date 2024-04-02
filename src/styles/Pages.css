@@ -1,3 +1,10 @@
+/* body {
+    background-size: auto;
+    background: linear-gradient(rgb(110, 111, 113), rgb(64, 62, 103));
+    height: 100%;
+    background-repeat: no-repeat;
+    
+  } */
 .component {
     opacity: 1;
     transition: opacity 500ms transform 500ms ;

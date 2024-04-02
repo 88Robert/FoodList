@@ -8,10 +8,13 @@ function App() {
     setShowMainpage(!showMainpage);
   };
 
+/* Använder state här för att kunna render en komponent först och genom att man klickar på komponenten renderas the till Mainpage */
+/* Aktivt valt att inte ha mycket färg då jag gillade att det var "cleant" */
+
   return (
-    <>
+    <div className="Body">
       {showMainpage? <Mainpage /> : <Intropage onClick={toggleComponent} />} 
-    </>
+    </div>
   );
 }
 

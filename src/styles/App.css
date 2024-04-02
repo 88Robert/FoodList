@@ -1,4 +1,33 @@
-  .Foodpic {
+.Header2 {
+  color: black;
+}
+
+.Header3 {
+  color: black;
+}
+
+.Header5 {
+  color: black;
+}
+
+.Paragram {
+  color: black;
+}
+
+.List {
+  color: black;
+}
+
+.Button {
+  border-radius: 5px;
+  background-color: rgb(240, 144, 9);
+}
+
+.Input {
+  border-radius: 10px;
+}
+
+.Foodpic {
     cursor: pointer;
     height: 300px; 
     border-radius: 15px;

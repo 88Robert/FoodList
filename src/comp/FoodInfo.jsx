@@ -1,4 +1,6 @@
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, } from "react-bootstrap";
+
+/*I denna komponent renderas detaljerad info ut, och hämtar info via props från Search komponenten */
 
 const FoodInfo = ({ food }) => {
   const filterIngredients = (food) => {
@@ -13,16 +15,16 @@ const FoodInfo = ({ food }) => {
     <Container>
       <Row>
         <div>
-          <h3>{food.strMeal}</h3>
+          <h3 className="Header3">{food.strMeal}</h3>
           <img className="Foodpicid" src={food.strMealThumb} alt={food.strMeal} />
           <br />
-          <h5>Ingredients:</h5>
+          <h5 className="Header5">Ingredients:</h5>
           <ul>
             {filterIngredients(food).map((ingredient, index) => (
-              <li key={index}>{ingredient}</li>
+              <li className="List" key={index}>{ingredient}</li>
             ))}
           </ul>
-          <h5>Info:</h5> <p>{food.strInstructions}</p>
+          <h5 className="Header5">Info:</h5> <p className="Paragram">{food.strInstructions}</p>
         </div>
       </Row>
     </Container>

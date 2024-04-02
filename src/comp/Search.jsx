@@ -3,6 +3,7 @@ import { useState } from "react";
 import FoodInfo from "./FoodInfo";
 
 const Search = () => {
+  /* Sätter states för API hantering */
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [selectedFood, setSelectedFood] = useState(null);
@@ -11,7 +12,9 @@ const Search = () => {
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
   };
+  /* ------------------------------------------------------ */
 
+  /* Hämtar API och skapar vilkor */
   const searchFood = async () => {
     try {
       const response = await fetch(
@@ -33,31 +36,42 @@ const Search = () => {
   const handleFoodSelect = (food) => {
     setSelectedFood(food);
   };
+  /* --------------------------------------------------------*/
 
+  /*  Detta är grunden för att kunna hantera att sökresultaten delas och 
+  visas i 2 olika col */
   const halfIndex = Math.ceil(searchResults.length / 2);
   const firstHalfResults = searchResults.slice(0, halfIndex);
   const secondHalfResults = searchResults.slice(halfIndex);
+  /* -------------------------------------------------------- */
 
   return (
+    /* Skapar sökfält där man hämtar information från API för att sedan visa */
     <Container>
       <Row>
         <div className="SearchDiv">
-          <h2>Här hittar du flera olika delikata maträtter!</h2>
-          <input className="input"
+          <h2 className="Header2">Här hittar du flera olika delikata maträtter!</h2>
+          <input
+            className="Input"
             type="text"
             placeholder="Sök på maträtter"
             value={searchTerm}
             onChange={handleSearchChange}
           />
           <br />
-          <button onClick={searchFood}>Sök</button>
+          <button className="Button" onClick={searchFood}>
+            Sök
+          </button>
           {error && <p>{error}</p>}
         </div>
+        {/* ------------------------------------------------------- */}
+
+        {/* Visar första halvan av sökresultatet */}
         <Col xs={3} md={3}>
           <div>
             {firstHalfResults.map((food, index) => (
               <div key={index} className="food-item">
-                <h3>{food.strMeal}</h3>
+                <h3 className="Header3">{food.strMeal}</h3>
                 <img
                   className="Foodpic"
                   src={food.strMealThumb}
@@ -68,11 +82,14 @@ const Search = () => {
             ))}
           </div>
         </Col>
+        {/* ------------------------------------------------------- */}
+
+        {/* Visar andra halvan i sökresultatet */}
         <Col xs={5} md={5}>
           <div>
             {secondHalfResults.map((food, index) => (
               <div key={index} className="food-item">
-                <h3>{food.strMeal}</h3>
+                <h3 className="Header3">{food.strMeal}</h3>
                 <img
                   className="Foodpic"
                   src={food.strMealThumb}
@@ -83,11 +100,16 @@ const Search = () => {
             ))}
           </div>
         </Col>
+        {/* ------------------------------------------------------- */}
+
+        {/* Hämtar FoodInfo-komponenten och använder props för att visa ut mer
+            detaljerad information */}
         <Col xs={4} md={4}>
           {selectedFood && <FoodInfo food={selectedFood} />}
         </Col>
       </Row>
     </Container>
+    /* -------------------------------------------------------- */
   );
 };
 
